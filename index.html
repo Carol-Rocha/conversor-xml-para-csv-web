@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Conversor de NF-e para CSV</title>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Conversor de NF-e para CSV</h1>
+  <p>Converta seus arquivos XML de notas fiscais para CSV.</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <div class="upload-box">
+      <p><strong>Selecione ou arraste seu arquivo .RAR com os XMLs</strong></p>
+      <label class="upload-btn">
+        Upload de Arquivo
+        <input type="file" accept=".rar" onchange="iniciarProcessamento()" />
+      </label>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">Processamento em Andamento</div>
+
+    <div class="step">
+      <div class="step-header">
+        <span>1. Extraindo Arquivos...</span>
+      </div>
+      <div class="progress"><div id="p1" class="progress-bar"></div></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <span>2. Lendo XMLs...</span>
+        <span id="s2"></span>
+      </div>
+      <div class="progress"><div id="p2" class="progress-bar"></div></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <span>3. Gerando Relatório CSV...</span>
+      </div>
+      <div class="progress"><div id="p3" class="progress-bar"></div></div>
+    </div>
+
+    <div class="step">
+      <div class="step-header">
+        <span>4. Conclusão...</span>
+      </div>
+      <div class="progress"><div id="p4" class="progress-bar"></div></div>
+    </div>
+
+    <button class="download-btn">Download CSV</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
