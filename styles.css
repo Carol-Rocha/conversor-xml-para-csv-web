@@ -1,0 +1,136 @@
+:root {
+  --verde-escuro: #0f5132;
+  --verde: #198754;
+  --verde-claro: #e6f4ea;
+  --cinza: #f4f6f8;
+  --cinza-borda: #dee2e6;
+  --texto: #212529;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f8f9fa;
+  color: var(--texto);
+}
+
+header {
+  background: linear-gradient(135deg, #0f5132, #198754);
+  padding: 50px 20px;
+  text-align: center;
+  color: white;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 36px;
+}
+
+header p {
+  margin-top: 10px;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+header span {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.container {
+  max-width: 900px;
+  margin: -60px auto 40px;
+  padding: 0 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.upload-box {
+  border: 2px dashed var(--cinza-borda);
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+}
+
+.upload-box input {
+  display: none;
+}
+
+.upload-btn {
+  background: var(--verde);
+  color: white;
+  border: none;
+  padding: 12px 26px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.upload-btn:hover {
+  background: var(--verde-escuro);
+}
+
+.section-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: var(--verde-escuro);
+}
+
+.step {
+  background: var(--cinza);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.step-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.progress {
+  background: #e9ecef;
+  border-radius: 8px;
+  height: 12px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--verde);
+  transition: width 0.4s ease;
+}
+
+.completed {
+  color: var(--verde);
+}
+
+.download-btn {
+  width: 100%;
+  background: var(--verde);
+  border: none;
+  color: white;
+  padding: 16px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.download-btn:hover {
+  background: var(--verde-escuro);
+}
