@@ -8,14 +8,11 @@ async function iniciarProcessamento(event) {
     return;
   }
 
-  // Reset visual
   resetarBarras();
 
   try {
-    // Etapa 1 - Extração
     await animar("p1", 100, 800);
 
-    // Etapa 2 - Envio e processamento
     await animar("p2", 100, 1200);
     document.getElementById("s2").innerHTML = "Processando XMLs...";
     
@@ -38,10 +35,8 @@ async function iniciarProcessamento(event) {
     document.getElementById("s2").innerHTML = "✔ Leitura Completa!";
     document.getElementById("s2").classList.add("completed");
 
-    // Etapa 3 - Gerar CSV
     await animar("p3", 100, 800);
 
-    // Etapa 4 - Conclusão
     await animar("p4", 100, 500);
 
     habilitarDownload();
