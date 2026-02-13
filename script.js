@@ -1,5 +1,7 @@
 let csvBlob = null;
 
+const API_URL = "https://conversor-xml-para-csv-api.onrender.com";
+
 async function iniciarProcessamento(event) {
   const file = event.target.files[0];
   const s1 = document.getElementById("s1");
@@ -37,7 +39,7 @@ async function iniciarProcessamento(event) {
     const formData = new FormData();
     formData.append("file", file);
 
-    const response = await fetch("http://localhost:8000/processar", {
+    const response = await fetch(`${API_URL}/processar`, {
       method: "POST",
       body: formData
     });
