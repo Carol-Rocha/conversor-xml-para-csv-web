@@ -90,3 +90,24 @@ function resetarBarras() {
 
   document.querySelector(".download-btn").disabled = true;
 }
+
+const uploadBox = document.getElementById("uploadBox");
+
+uploadBox.addEventListener("dragover", function(event){
+  event.preventDefault();
+  uploadBox.classList.add("dragover");
+});
+
+uploadBox.addEventListener("dragleave", function(event){
+  event.preventDefault();
+  uploadBox.classList.remove("dragover");
+});
+
+uploadBox.addEventListener("drop", function(event){
+  event.preventDefault();
+  uploadBox.classList.remove("dragover");
+  const file = event.dataTransfer.files[0];
+  if (file) {
+    iniciarProcessamento({ target: { files: [file] } });
+  }
+});

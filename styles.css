@@ -81,6 +81,11 @@ header span {
   background: var(--verde-escuro);
 }
 
+.upload-box.dragover {
+  border-color: var(--verde);
+  background: var(--verde-claro);
+}
+
 .section-title {
   font-size: 20px;
   margin-bottom: 20px;
