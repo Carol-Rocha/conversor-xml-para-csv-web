@@ -2,19 +2,37 @@ let csvBlob = null;
 
 async function iniciarProcessamento(event) {
   const file = event.target.files[0];
+  const s1 = document.getElementById("s1");
+  const s2 = document.getElementById("s2");
+  const s3 = document.getElementById("s3");
+  const s4 = document.getElementById("s4");
 
   if (!file) {
-    alert("Selecione um arquivo .RAR");
+    s1.innerHTML = "Nenhum arquivo selecionado.";
+    s1.classList.remove("completed");
+    mostrarAlerta("Selecione um arquivo .RAR");
     return;
   }
+
+  if (!file.name.toLowerCase().endsWith('.rar')) {
+  s1.innerHTML = "Erro: O arquivo deve ser do tipo .RAR.";
+  s1.classList.remove("completed");
+  mostrarAlerta("Por favor, selecione um arquivo .RAR.");
+  return;
+}
 
   resetarBarras();
 
   try {
+    s1.innerHTML = "Extraindo arquivos .RAR...";
     await animar("p1", 100, 800);
+    s1.innerHTML = "✔ Arquivos extraídos com sucesso!";
+    s1.classList.add("completed");
 
+    s2.innerHTML = "Processando XMLs...";
     await animar("p2", 100, 1200);
-    document.getElementById("s2").innerHTML = "Processando XMLs...";
+    s2.innerHTML = "✔ Leitura Completa!";
+    s2.classList.add("completed");
     
     const formData = new FormData();
     formData.append("file", file);
@@ -32,18 +50,27 @@ async function iniciarProcessamento(event) {
 
     csvBlob = await response.blob();
 
-    document.getElementById("s2").innerHTML = "✔ Leitura Completa!";
-    document.getElementById("s2").classList.add("completed");
 
+    s3.innerHTML = "Gerando relatório CSV...";
     await animar("p3", 100, 800);
+    s3.innerHTML = "✔ Relatório CSV gerado!";
+    s3.classList.add("completed");
 
+    s4.innerHTML = "Finalizando processo...";
     await animar("p4", 100, 500);
+    s4.innerHTML = "✔ Processo finalizado!";
+    s4.classList.add("completed");
 
     habilitarDownload();
 
   } catch (error) {
-    console.error("Erro completo:", error);
-    alert(error.message || "Erro ao processar o arquivo");
+      if (!csvBlob) {
+        s3.innerHTML = "Erro ao gerar o relatório CSV.";
+        s3.classList.remove("completed");
+      }
+      s4.innerHTML = "Erro na conclusão do processo.";
+      s4.classList.remove("completed");
+      mostrarAlerta(error.message || "Erro ao processar o arquivo");
   }
 }
 
@@ -84,10 +111,10 @@ function resetarBarras() {
     document.getElementById(id).style.width = "0%";
   });
 
-  const s2 = document.getElementById("s2");
-  s2.innerHTML = "";
-  s2.classList.remove("completed");
-
+  [s1, s2, s3, s4].forEach(span => {
+    span.innerHTML = "";
+    span.classList.remove("completed");
+  });
   document.querySelector(".download-btn").disabled = true;
 }
 
@@ -111,3 +138,16 @@ uploadBox.addEventListener("drop", function(event){
     iniciarProcessamento({ target: { files: [file] } });
   }
 });
+
+function mostrarAlerta(mensagem, tempo = 3000) {
+  const alerta = document.getElementById("alerta");
+  alerta.innerText = mensagem;
+  alerta.style.display = "block";
+  alerta.style.opacity = "1";
+  setTimeout(() => {
+    alerta.style.opacity = "0";
+    setTimeout(() => {
+      alerta.style.display = "none";
+    }, 300);
+  }, tempo);
+}
