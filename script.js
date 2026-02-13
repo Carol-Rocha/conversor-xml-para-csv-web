@@ -13,10 +13,10 @@ async function iniciarProcessamento(event) {
 
   try {
     // Etapa 1 - Extração
-    animar("p1", 100, 800);
+    await animar("p1", 100, 800);
 
     // Etapa 2 - Envio e processamento
-    animar("p2", 100, 1200);
+    await animar("p2", 100, 1200);
     document.getElementById("s2").innerHTML = "Processando XMLs...";
     
     const formData = new FormData();
@@ -39,10 +39,10 @@ async function iniciarProcessamento(event) {
     document.getElementById("s2").classList.add("completed");
 
     // Etapa 3 - Gerar CSV
-    animar("p3", 100, 800);
+    await animar("p3", 100, 800);
 
     // Etapa 4 - Conclusão
-    animar("p4", 100, 500);
+    await animar("p4", 100, 500);
 
     habilitarDownload();
 
@@ -74,11 +74,14 @@ function baixarCSV() {
 }
 
 function animar(id, valor, tempo) {
-  const bar = document.getElementById(id);
-  bar.style.width = "0%";
-  setTimeout(() => {
-    bar.style.width = valor + "%";
-  }, tempo);
+  return new Promise (resolve => {
+    const bar = document.getElementById(id);
+    bar.style.width = "0%";
+    setTimeout(() => {
+      bar.style.width = valor + "%";
+      resolve();
+    }, tempo);
+  })
 }
 
 function resetarBarras() {
