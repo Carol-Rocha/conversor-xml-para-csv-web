@@ -81,6 +81,11 @@ header span {
   background: var(--verde-escuro);
 }
 
+.upload-box.dragover {
+  border-color: var(--verde);
+  background: var(--verde-claro);
+}
+
 .section-title {
   font-size: 20px;
   margin-bottom: 20px;
@@ -133,4 +138,22 @@ header span {
 
 .download-btn:hover {
   background: var(--verde-escuro);
+}
+
+.alerta {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  padding: 16px 32px;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  font-size: 16px;
+  z-index: 9999;
+  min-width: 220px;
+  text-align: center;
+  transition: opacity 0.3s;
 }
