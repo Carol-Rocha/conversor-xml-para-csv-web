@@ -17,7 +17,7 @@
 <div class="container">
 
   <div class="card">
-    <div class="upload-box">
+    <div class="upload-box" id="uploadBox">
       <p><strong>Selecione ou arraste seu arquivo .RAR com os XMLs</strong></p>
       <label class="upload-btn">
         Upload de Arquivo
@@ -32,6 +32,7 @@
     <div class="step">
       <div class="step-header">
         <span>1. Extraindo Arquivos...</span>
+        <span id="s1"></span>
       </div>
       <div class="progress"><div id="p1" class="progress-bar"></div></div>
     </div>
@@ -47,6 +48,7 @@
     <div class="step">
       <div class="step-header">
         <span>3. Gerando Relatório CSV...</span>
+        <span id="s3"></span>
       </div>
       <div class="progress"><div id="p3" class="progress-bar"></div></div>
     </div>
@@ -54,6 +56,7 @@
     <div class="step">
       <div class="step-header">
         <span>4. Conclusão...</span>
+        <span id="s4"></span>
       </div>
       <div class="progress"><div id="p4" class="progress-bar"></div></div>
     </div>
@@ -66,4 +69,7 @@
 <script src="script.js"></script>
 
 </body>
+
+<div id="alerta" class="alerta" style="display:none"></div>
+
 </html>
